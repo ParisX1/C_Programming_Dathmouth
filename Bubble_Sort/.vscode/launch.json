@@ -1,0 +1,14 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+  {
+    "type": "lldb",
+    "request": "launch",
+    "name": "Launch",
+    "tag":"-g",
+    "program": "C:/Users/tom/Dropbox/MOOCs/C Programming (Dartmouth)/Bubble_Sort/repeat_letters",
+    "args": [],
+    "cwd": "C:/Users/tom/Dropbox/MOOCs/C Programming (Dartmouth)/Bubble_Sort"
+  } 
+  ]
+}
