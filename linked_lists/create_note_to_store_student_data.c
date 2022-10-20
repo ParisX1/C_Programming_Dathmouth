@@ -22,7 +22,7 @@ struct student {
 };
 
 struct student *createStudent(char studentName[], int studentAge);
-void copyStr(char* source, char* target);
+void copyStr(char* sourceString, char* stringToAssign);
 
 int main(void) {
     struct student *studptr;
@@ -43,11 +43,11 @@ struct student* createStudent(char studentName[], int studentAge){
     return studentPtr;
 }
 
-void copyStr(char* source, char* target) {
+void copyStr(char* sourceString, char* stringToAssign) {
     int i = 0;
-    while (source[i] != '\0') {
-        target[i] = source[i];
+    while (sourceString[i] != '\0') {
+        stringToAssign[i] = sourceString[i];
         i++;
     }
-    target[i] = '\0';
+    stringToAssign[i] = '\0';
 }
