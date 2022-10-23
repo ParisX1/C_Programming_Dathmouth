@@ -1,11 +1,9 @@
 /*
-Your new task is to write a function append() which takes as input two pointers: 
-the first pointer holds the address of the current end of the linked list of 
-students, the second pointer points to a newly created student. Your function 
-should append this new student to the linked list and return the address 
-(a struct student *) of the new end of the list. 
+Your new task is to write a function printStudents() which takes as input a 
+pointer that holds the address of the start of a linked list of students. 
+Your function should then print this list of students to the screen as 
+specified in the example below. Your function should not return anything.
 
-Example
 Input: 
 25 18 32
 Output: 
@@ -23,40 +21,50 @@ struct student {
       struct student *next;
 };
 
-struct student *createStudent(char studentName[], int studentAge);
-struct student *append(struct student * end, struct student * newStudptr); 
+struct student *createStudent(char studentName[50], int studentAge);
+struct student * append(struct student * end, struct student * newStudptr); 
+void printStudents(struct student *start);
 void copyStr(char* sourceString, char* stringToAssign);
-/* add other prototypes here if needed */
+/* add other prototypes here if needed*/
 
 int main(void) {
     struct student *start, *newStudptr, *end, *tmp;
     int ageP, ageR, ageM;
 
     scanf("%d %d %d", &ageP, &ageR, &ageM);
+
     start = createStudent("Petra", ageP);
     end = start;
+
     newStudptr = createStudent("Remi", ageR);
     end = append(end, newStudptr);
+
     newStudptr = createStudent("Mike", ageM);
     end = append(end, newStudptr);
 
-    printf("%s is %d years old.\n", start->name, start->age);
-    printf("%s is %d years old.\n", start->next->name, start->next->age);
-    printf("%s is %d years old.\n", start->next->next->name, start->next->next->age);
-
+    printStudents(start);
     tmp = start->next;
+
     free(start);
+
     start = tmp;
     tmp = start->next;
+
     free(start);
     free(tmp);
 
     return 0;
 }
 
+void printStudents(struct student *start) {
+    while (start != NULL) {
+        printf("%s is %d years old.\n", start->name, start->age);
+        start = start->next;
+    }
+}
+
 struct student *createStudent(char studentName[], int studentAge){
     struct student* studentPtr = (struct student*) malloc(sizeof(struct student));
-    //studentPtr->name = studentName;
     copyStr(studentName, studentPtr->name);
     studentPtr->age = studentAge;
     return studentPtr;
